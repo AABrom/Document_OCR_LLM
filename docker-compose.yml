@@ -23,14 +23,6 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
-    # Загружаем модель при первом запуске
-    command: >
-      sh -c "
-        ollama serve &
-        sleep 10 &&
-        ollama pull llama3.1 &&
-        wait
-      "
 
 volumes:
   ollama_data:
