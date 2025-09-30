@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BloodTestReport",
+  "properties": {
+    "patient_name": { "type": "string" },
+    "patient_id": { "type": "string" },
+    "date_of_test": { "type": "string", "format": "date" },
+    "hemoglobin": { "type": "number" },
+    "wbc": { "type": "number" },
+    "rbc": { "type": "number" },
+    "platelets": { "type": "number" },
+    "hematocrit": { "type": "number" }
+  },
+  "required": ["patient_name", "date_of_test", "hemoglobin", "wbc", "rbc", "platelets", "hematocrit"],
+  "additionalProperties": false
+}

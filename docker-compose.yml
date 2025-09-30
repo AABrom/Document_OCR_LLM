@@ -1,0 +1,36 @@
+services:
+  backend:
+    build: ./ocr_package
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_HOST=host.docker.internal
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./ocr_package:/app
+    # Для hot-reload при разработке
+    develop:
+      watch:
+        - action: sync
+          path: ./ocr_package
+          target: /app
+
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    # Загружаем модель при первом запуске
+    command: >
+      sh -c "
+        ollama serve &
+        sleep 10 &&
+        ollama pull llama3.1 &&
+        wait
+      "
+
+volumes:
+  ollama_data:
