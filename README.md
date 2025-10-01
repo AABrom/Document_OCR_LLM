@@ -72,6 +72,7 @@ Wait for successful initialization logs like:
 
 # OCR project Structure
 
+```text
 ocr_package/
 ├── app/
 │   ├── __init__.py
@@ -82,9 +83,10 @@ ocr_package/
 │   └── llm_client.py
 ├──requirements.txt
 └──readme.md
+```
 
 # Test dart\flutter client Structure
-
+```text
 test_websocket/
 …
 ├── assets/
@@ -96,3 +98,4 @@ test_websocket/
   	│	└──schema_storage.dart    // schema loader	
   	└── services/
    		└──websocket_service.dart   // websocket connector
+```
