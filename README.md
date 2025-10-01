@@ -1,6 +1,15 @@
 # OCR Microservice with Ollama LLM Integration
 
-This project provides an OCR microservice combining EasyOCR for image-to-text recognition and Ollama for interacting with large language models (LLMs) to process and structure extracted text. The service operates a WebSocket server for real-time OCR requests and uses Ollama to enhance text structuring capabilities.
+This project provides
+- ocr_package: an OCR microservice combining EasyOCR for image-to-text recognition and Ollama for interacting with large language models (LLMs) to process and structure extracted text. The service operates a WebSocket server for real-time OCR requests and uses Ollama to enhance text structuring capabilities. To build and run package use docker or run manually.
+- test_websocket: test dart\flutter client. Run manually.   
+
+---
+
+- Websocket-сервер на Python с функционалом обработки полученного сообщения со схемой документа и base64-конвертированным изображением: передача в модель OCR изображения, получение текста и передача текста со схемой Ollama-серверу 
+- Тестовый клиент на flutter для демонстрации отправки изображения и схемы. Демонстрируется фрагмент Json-схемы. 
+- В сборке docker: Ollama-сервер - open source ПО для локальной и удаленной работы с большими языковыми моделями, LLM-модель для структурирования текста согласно переданной схеме документа 
+
 
 ---
 
@@ -60,7 +69,8 @@ Wait for successful initialization logs like:
 [2025-09-29 20:10:07,942] INFO app.logger: EasyOCR reader initialized.
 [2025-09-29 20:10:08,051] INFO app.logger: OCR WebSocket server running at ws://0.0.0.0:8080
 
-# Project Structure
+
+# OCR project Structure
 
 ocr_package/
 ├── app/
@@ -70,3 +80,19 @@ ocr_package/
 │   ├── ocr.py
 │   ├── models.py
 │   └── llm_client.py
+├──requirements.txt
+└──readme.md
+
+# Test dart\flutter client Structure
+
+test_websocket/
+…
+├── assets/
+│   	└── schemas/ 
+│   		└── blood_test.json 	// json-schema example for document form	
+├── lib/
+ …  ├── main.dart		 // include simple interface
+  	└── schema_repository/ 
+  	│	└──schema_storage.dart    // schema loader	
+  	└── services/
+   		└──websocket_service.dart   // websocket connector
