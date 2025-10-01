@@ -24,6 +24,7 @@ Speed issue is common. Speed fluctuates and some parts stall during llm model do
 In most cases, the download will eventually complete successfully. Once the model is downloaded and cached in the Docker volume, subsequent usage won't redo this step unless the volume is deleted.
 
 - Or compose and run manually:
+
 !!! if running locally, replace in main "http://ollama:11434" -> "http://localhost:11434"
 
 ## 1. Install Python 3.13
@@ -66,9 +67,10 @@ python -m app.main
 
 Wait for successful initialization logs like:
 
+```bash
 [2025-09-29 20:10:07,942] INFO app.logger: EasyOCR reader initialized.
 [2025-09-29 20:10:08,051] INFO app.logger: OCR WebSocket server running at ws://0.0.0.0:8080
-
+```
 
 # OCR project Structure
 
